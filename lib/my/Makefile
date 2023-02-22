@@ -10,12 +10,18 @@ SRC			=	my_box.c 				\
 				my_debug.c 				\
 				my_getnbr.c				\
 				my_math.c				\
+				my_memory.c				\
 				my_putchar.c			\
+				my_putnbr_base.c		\
 				my_putnbr.c				\
 				my_putstr.c				\
+				my_showstr.c			\
 				my_str_are_in.c			\
+				my_str_checks.c			\
 				my_str_count.c			\
 				my_str_find.c			\
+				my_strcmp.c				\
+				my_strcpy.c				\
 				my_strdup.c				\
 				my_strlen.c				\
 

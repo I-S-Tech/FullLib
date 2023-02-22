@@ -9,6 +9,20 @@
 
 #include "includes.h"
 
+static void         curstom_showstr(const char *str)
+{
+    for (int i = 0; str[i]; i++) {
+        if (str[i] < 32 || str[i] > 126) {
+            my_putstr(MY_COLOR_RED);
+            my_putchar('\\');
+            my_putnbr_base((int)str[i], "0123456789abcdef");
+            my_putstr(MY_COLOR_YELLOW);
+        } else {
+            my_putchar(str[i]);
+        }
+    }
+}
+
 static void         show_value(char type, void *value)
 {
     my_putstr(MY_COLOR_YELLOW);
@@ -16,7 +30,7 @@ static void         show_value(char type, void *value)
         case 'I':
             my_putnbr(*(int *)value); break;
         case 'S':
-            my_showstr(*(char **)value); break;
+            curstom_showstr(*(char **)value); break;
         default:
             my_putstr("Could not read value : type not found");
             break;

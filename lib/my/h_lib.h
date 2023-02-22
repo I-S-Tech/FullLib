@@ -14,7 +14,7 @@ void                my_delet_box(m_box box);
 void                my_putstr_color_fd(char *str, char *color, int fd);
 void                my_putstr_color(char *str, char *color);
 
-void                _my_debug(char type, m_box var, int line, char *file);
+void                dev_my_debug(char type, m_box var, int line, char *file);
 
 int                 my_getnbr_raw(const char *str);
 int                 my_getnbr(const char *str);

@@ -17,7 +17,6 @@ void                my_showstr_fd(const char *str, int fd)
             my_putchar_fd(str[i], fd);
         }
     }
-    return 0;
 }
 
 void                my_showstr(const char *str)
