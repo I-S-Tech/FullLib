@@ -25,7 +25,7 @@ static void         show_value(char type, void *value)
     my_putstr(MY_COLOR_RESET);
 }
 
-void                _my_debug(char type, m_box var, int line, char *file)
+void                dev_my_debug(char type, m_box var, int line, char *file)
 {
     my_putstr(MY_COLOR_GREY);
     my_putstr(file);
