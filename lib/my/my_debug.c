@@ -16,7 +16,7 @@ static void         show_value(char type, void *value)
         case 'I':
             my_putnbr(*(int *)value); break;
         case 'S':
-            my_putstr(*(char **)value); break;
+            my_showstr(*(char **)value); break;
         default:
             my_putstr("Could not read value : type not found");
             break;

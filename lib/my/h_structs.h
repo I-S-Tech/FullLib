@@ -13,4 +13,6 @@ typedef struct _m_box {
     void *value;
 } _m_box;
 
+typedef char bool;
+
 #endif
