@@ -44,6 +44,8 @@ void                my_showstr(const char *str);
 int                 my_str_get_index(const char *str, char c);
 bool                my_str_are_only(const char *str, const char *ref);
 
+char               *my_strcapitalize(char *str);
+
 bool                my_str_is_letters(const char *str);
 bool                my_str_is_numbers(const char *str);
 bool                my_str_is_upper(const char *str);
@@ -52,6 +54,9 @@ bool                my_str_is_lower(const char *str);
 int                 my_str_count(const char *str, char c);
 
 char               *my_str_find(char *str, const char *sub);
+
+char               *my_strcat(char *dest, char *src);
+char               *my_strncat(char *dest, char const *src, int n);
 
 int                 my_strcmp(const char *s1, const char *s2);
 int                 my_strncmp(const char *s1, const char *s2, int n);
@@ -62,7 +67,8 @@ char               *my_strncpy(char *dest, const char *src, int n);
 char               *my_strdup(const char *str);
 
 int                 my_strlen(const char *str);
-
 int                 my_strlen_to_char(const char *str, char c);
+
+void                my_swap(int *a, int *b);
 
 #endif
