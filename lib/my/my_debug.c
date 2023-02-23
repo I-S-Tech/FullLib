@@ -31,6 +31,8 @@ static void         show_value(char type, void *value)
             my_putnbr(*(int *)value); break;
         case 'S':
             curstom_showstr(*(char **)value); break;
+        case 'B':
+            my_putstr((*(bool *)value) ? "True" : "False"); break;
         default:
             my_putstr("Could not read value : type not found");
             break;
@@ -39,7 +41,7 @@ static void         show_value(char type, void *value)
     my_putstr(MY_COLOR_RESET);
 }
 
-void                dev_my_debug(char type, m_box var, int line, char *file)
+void                dev_my_debug(m_box var, int line, char *file)
 {
     my_putstr(MY_COLOR_GREY);
     my_putstr(file);
@@ -48,6 +50,19 @@ void                dev_my_debug(char type, m_box var, int line, char *file)
     my_putstr(": ");
     my_putstr_color(var->name, MY_COLOR_GREEN);
     my_putstr_color(": ", MY_COLOR_GREY);
-    show_value(type, var->value);
+    show_value(var->type, var->value);
+    my_delet_box(var);
+}
+
+void                dev_my_debug_custom(m_box var, int line, char *file, void (*func)(void *))
+{
+    my_putstr(MY_COLOR_GREY);
+    my_putstr(file);
+    my_putstr(":");
+    my_putnbr(line);
+    my_putstr(": ");
+    my_putstr_color(var->name, MY_COLOR_GREEN);
+    my_putstr_color(": ", MY_COLOR_GREY);
+    func(var->value);
     my_delet_box(var);
 }

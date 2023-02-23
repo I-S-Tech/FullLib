@@ -8,13 +8,14 @@
 #ifndef INCLUDED_LIB_LIB_H
     #define INCLUDED_LIB_LIB_H
 
-m_box               my_create_box(char *name, void *value);
+m_box               my_create_box(char *name, void *value, char type);
 void                my_delet_box(m_box box);
 
 void                my_putstr_color_fd(char *str, char *color, int fd);
 void                my_putstr_color(char *str, char *color);
 
-void                dev_my_debug(char type, m_box var, int line, char *file);
+void                dev_my_debug(m_box var, int line, char *file);
+void                dev_my_debug_custom(m_box var, int line, char *file, void (*func)(void *));
 
 int                 my_getnbr_raw(const char *str);
 int                 my_getnbr(const char *str);

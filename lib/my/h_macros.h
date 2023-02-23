@@ -32,7 +32,9 @@
 
     // ####################### Functions #######################
 
-    #define my_debug(type, var) dev_my_debug(type,\
-        my_create_box(STR(var), POINTER(var)), __LINE__, __FILE__)
+    #define my_debug(type, var) dev_my_debug(my_create_box(STR(var),\
+        POINTER(var), type), __LINE__, __FILE__)
+    #define my_debug_custom(type, var, func) dev_my_debug_custom(\
+        my_create_box(STR(var), POINTER(var), type), __LINE__, __FILE__, func)
 
 #endif
