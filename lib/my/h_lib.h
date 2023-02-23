@@ -59,8 +59,10 @@ int                 my_str_count(const char *str, char c);
 
 char               *my_str_find(char *str, const char *sub);
 
-char               *my_strcat(char *dest, char *src);
-char               *my_strncat(char *dest, char const *src, int n);
+char               *my_str_join(char **map, const char *join);
+
+char               *my_strcat(char *dest, const char *src);
+char               *my_strncat(char *dest, const char *src, int n);
 
 int                 my_strcmp(const char *s1, const char *s2);
 int                 my_strncmp(const char *s1, const char *s2, int n);

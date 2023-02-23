@@ -20,6 +20,8 @@ SRC			=	my_box.c 				\
 				my_str_checks.c			\
 				my_str_count.c			\
 				my_str_find.c			\
+				my_str_join.c			\
+				my_strcat.c				\
 				my_strcmp.c				\
 				my_strcpy.c				\
 				my_strdup.c				\

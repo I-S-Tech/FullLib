@@ -7,7 +7,7 @@
 
 #include "includes.h"
 
-char               *my_strcat(char *dest, char *src)
+char               *my_strcat(char *dest, const char *src)
 {
     int length = my_strlen(dest);
     for (int i = 0; src[i]; i++)
@@ -17,7 +17,7 @@ char               *my_strcat(char *dest, char *src)
     return dest;
 }
 
-char               *my_strncat(char *dest, char const *src, int n)
+char               *my_strncat(char *dest, const char *src, int n)
 {
     int dest_length = my_strlen(dest), i = 0;
     for (; src[i] && i < n; i++)
