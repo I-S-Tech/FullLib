@@ -7,7 +7,7 @@
 
 #include "includes.h"
 
-char               *my_str_find(char *str, const char *sub)
+int                 my_str_find(char *str, const char *sub)
 {
     bool found;
     int length = my_strlen(str) - my_strlen(sub);
@@ -16,7 +16,7 @@ char               *my_str_find(char *str, const char *sub)
         for (int j = 0; sub[j]; j++)
             found = found ? (str[i + j] == sub[j]) : found;
         if (found)
-            return &str[i];
+            return i;
     }
-    return NULL;
+    return -1;
 }

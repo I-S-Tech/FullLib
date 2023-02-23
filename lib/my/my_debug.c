@@ -30,6 +30,7 @@ static void         my_put_long_nbr_base(unsigned long long nbr,
 
 static void         curstom_showstr(const char *str)
 {
+    my_putchar('"');
     for (int i = 0; str[i]; i++) {
         if (str[i] < 32 || str[i] > 126) {
             my_putstr(MY_COLOR_RED);
@@ -40,6 +41,7 @@ static void         curstom_showstr(const char *str)
             my_putchar(str[i]);
         }
     }
+    my_putchar('"');
 }
 
 static void         show_value_1(char type, void *value)

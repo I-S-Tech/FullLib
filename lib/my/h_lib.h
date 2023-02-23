@@ -56,10 +56,13 @@ bool                my_str_is_upper(const char *str);
 bool                my_str_is_lower(const char *str);
 
 int                 my_str_count(const char *str, char c);
+int                 my_str_counts(const char *_str, const char *sub);
 
-char               *my_str_find(char *str, const char *sub);
+int                 my_str_find(char *str, const char *sub);
 
 char               *my_str_join(char **map, const char *join);
+
+char              **my_str_split(char *str, const char *sub);
 
 char               *my_strcat(char *dest, const char *src);
 char               *my_strncat(char *dest, const char *src, int n);
@@ -71,6 +74,7 @@ char               *my_strcpy(char *dest, const char *src);
 char               *my_strncpy(char *dest, const char *src, int n);
 
 char               *my_strdup(const char *str);
+char               *my_strndup(const char *str, int n);
 
 int                 my_strlen(const char *str);
 int                 my_strlen_to_char(const char *str, char c);

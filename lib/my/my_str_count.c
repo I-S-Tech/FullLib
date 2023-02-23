@@ -15,3 +15,15 @@ int                 my_str_count(const char *str, char c)
             total++;
     return total;
 }
+
+int                 my_str_counts(const char *_str, const char *sub)
+{
+    char *str = my_strdup(_str);
+    int total = 0, pos = 0, next_pos = 0;
+    while (next_pos = my_str_find(&str[pos], sub) != -1) {
+        pos += my_str_find(&str[pos], sub) + my_strlen(sub);
+        total++;
+    }
+    free(str);
+    return total;
+}
