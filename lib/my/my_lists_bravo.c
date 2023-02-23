@@ -17,6 +17,7 @@ void                m_list_remove(m_list obj, bool was_malloced)
         obj->next->prev = obj->prev;
     if (was_malloced)
         free(obj->data);
+    free(obj);
 }
 
 void                m_list_destroy(m_list obj, bool was_malloced)
@@ -30,5 +31,6 @@ void                m_list_destroy(m_list obj, bool was_malloced)
             continue;
         m_list_remove(c->prev, was_malloced);
     }
+    m_list_remove(c->prev, was_malloced);
     m_list_remove(c, was_malloced);
 }
