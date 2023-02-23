@@ -9,8 +9,10 @@
     #define INCLUDED_LIB_INCLUDES_H
 
     #include "h_headers.h"
-    #include "h_structs.h"
+    #include "h_types.h"
     #include "h_macros.h"
+
     #include "h_lib.h"
+    #include "h_lists.h"
 
 #endif

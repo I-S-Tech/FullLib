@@ -24,12 +24,15 @@ SRC			=	my_box.c 				\
 				my_strcpy.c				\
 				my_strdup.c				\
 				my_strlen.c				\
+				my_lists_alpha.c 		\
+				my_lists_bravo.c 		\
 
 HEADERS		=	includes.h				\
 				h_headers.h				\
 				h_lib.h					\
+				h_lists.h				\
 				h_macros.h				\
-				h_structs.h				\
+				h_types.h				\
 
 OBJ			=	$(SRC:.c=.o)
 
