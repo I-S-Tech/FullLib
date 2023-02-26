@@ -24,13 +24,13 @@ char                *my_strcapitalize(char *str)
     char last = '\0';
 
     for (int i = 0; str[i]; i++) {
-        my_charup(&str[i]);
+        charup(&str[i]);
         if (last >= '0' && last <= '9')
-            my_charlow(&str[i]);
+            charlow(&str[i]);
         if (last >= 'A' && last <= 'Z')
-            my_charlow(&str[i]);
+            charlow(&str[i]);
         if (last >= 'a' && last <= 'z')
-            my_charlow(&str[i]);
+            charlow(&str[i]);
         last = str[i];
     }
     return str;
