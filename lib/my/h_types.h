@@ -11,7 +11,7 @@
 typedef struct _m_box {
     char *name;
     void *value;
-    char type;
+    char *type;
 } _m_box;
 
 typedef char bool;

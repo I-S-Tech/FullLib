@@ -9,15 +9,16 @@
 
 #include "includes.h"
 
-static void         my_put_long_nbr_base(unsigned long long nbr,
-    const char *base)
+static void         my_put_pointer(unsigned long long ptr)
 {
-    if (nbr > 9223372036854775807)
+    my_putstr("0x");
+    char *base = "0123456789abcdef";
+    if (ptr > 9223372036854775807)
         return;
     int basenum = my_strlen(base);
     if (basenum == 0)
         return;
-    unsigned long long rest = nbr;
+    unsigned long long rest = ptr;
     unsigned long long power = 1;
     while ((rest / power) > basenum)
         power *= basenum;
@@ -28,7 +29,7 @@ static void         my_put_long_nbr_base(unsigned long long nbr,
     }
 }
 
-static void         curstom_showstr(const char *str)
+static void         custom_showstr(const char *str)
 {
     my_putchar('"');
     for (int i = 0; str[i]; i++) {
@@ -44,25 +45,19 @@ static void         curstom_showstr(const char *str)
     my_putchar('"');
 }
 
-static void         show_value_1(char type, void *value)
+static void         show_value_1(char *type, void *value)
 {
     my_putstr(MY_COLOR_YELLOW);
-    switch (type) {
-        case 'I':
-            my_putnbr(*(int *)value); break;
-        case 'S':
-            curstom_showstr(*(char **)value); break;
-        case 'B':
-            my_putstr((*(bool *)value) ? "True" : "False"); break;
-        case 'P':
-            my_putstr("0x");
-            my_put_long_nbr_base(*(unsigned long long *)&value,
-                "0123456789abcdef");
-            break;
-        default:
-            my_putstr("Could not read value : type not found");
-            break;
-    }
+    if (my_strcmp(type, "int") == 0)
+        my_putnbr(*(int *)value);
+    if (my_strcmp(type, "str") == 0)
+        custom_showstr(*(char **)value);
+    if (my_strcmp(type, "bool") == 0)
+        my_putstr((*(bool *)value) ? "True" : "False");
+    if (my_strcmp(type, "pointer") == 0)
+        my_put_pointer(*(unsigned long long *)&value);
+    if (my_strcmp(type, "char") == 0)
+        my_putchar(*(char *)value);
     my_putchar('\n');
     my_putstr(MY_COLOR_RESET);
 }
