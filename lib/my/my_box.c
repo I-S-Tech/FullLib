@@ -11,7 +11,7 @@ m_box               my_create_box(char *name, void *value, char *type)
 {
     m_box current = malloc(sizeof(_m_box));
     current->name = my_strdup(name);
-    current->value = my_strdup(value);
+    current->value = value;
     current->type = my_strdup(type);
 
     return current;
@@ -20,7 +20,6 @@ m_box               my_create_box(char *name, void *value, char *type)
 void                my_delet_box(m_box box)
 {
     free(box->name);
-    free(box->value);
     free(box->type);
     free(box);
 }
