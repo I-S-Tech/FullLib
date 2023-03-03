@@ -62,6 +62,8 @@ int                 my_str_find(char *str, const char *sub);
 
 char               *my_str_join(char **map, const char *join);
 
+char               *my_str_replace(char *str, char *sep, char *to);
+
 char              **my_str_split(char *str, const char *sub);
 
 char               *my_strcat(char *dest, const char *src);
