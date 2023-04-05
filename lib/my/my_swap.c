@@ -7,9 +7,9 @@
 
 #include "includes.h"
 
-void                my_swap(int *a, int *b)
+void                my_swap(void *a, void *b)
 {
-    *a = *a + *b;
-    *b = *a - *b;
-    *a = *a - *b;
+    void *c = a;
+    a = b;
+    b = c;
 }

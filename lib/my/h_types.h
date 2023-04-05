@@ -15,5 +15,6 @@ typedef struct _m_box {
 } _m_box;
 
 typedef char bool;
+typedef char byte;
 
 #endif

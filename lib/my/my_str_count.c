@@ -16,14 +16,14 @@ int                 my_str_count(const char *str, char c)
     return total;
 }
 
-int                 my_str_counts(const char *_str, const char *sub)
+int                 my_str_counts(const char *str, const char *sub)
 {
-    char *str = my_strdup(_str);
+    char *_str = my_strdup(str);
     int total = 0, pos = 0, next_pos = 0;
-    while (next_pos = my_str_find(&str[pos], sub) != -1) {
-        pos += my_str_find(&str[pos], sub) + my_strlen(sub);
+    while (next_pos = my_str_find(&_str[pos], sub) != -1) {
+        pos += my_str_find(&_str[pos], sub) + my_strlen(sub);
         total++;
     }
-    free(str);
+    free(_str);
     return total;
 }

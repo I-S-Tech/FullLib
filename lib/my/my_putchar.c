@@ -7,7 +7,7 @@
 
 #include "includes.h"
 
-void                my_putchar_fd(char c, int fd)
+void                my_putchar_fd(byte c, int fd)
 {
     write(fd, &c, 1);
 }
