@@ -14,7 +14,6 @@ typedef struct _m_box {
     char *type;
 } _m_box;
 
-typedef char bool;
 typedef char byte;
 
 #endif
