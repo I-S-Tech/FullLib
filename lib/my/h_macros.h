@@ -13,9 +13,6 @@
     #define STR(obj) #obj
     #define POINTER(obj) &obj
 
-    #define true 1
-    #define false 0
-
     // ####################### Colors #######################
 
     #define MY_COLOR_RESET "\33[0m"
