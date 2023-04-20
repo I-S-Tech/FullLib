@@ -15,9 +15,9 @@
 /// @brief Create a "box": struct with a name, a value and a type
 /// @param name The box name : str
 /// @param value The box value : any type pointer
-/// @param type The box type : str
+/// @param type The box type : variable_type
 /// @return The newly created box
-m_box               my_create_box(char *name, void *value, char *type);
+m_box               my_create_box(char *name, void *value, variable_type type);
 
 /// @brief Delete a box
 /// @param box The box to delete
@@ -35,6 +35,27 @@ void                my_putstr_color_fd(char *str, char *color, int fd);
 /// @param str The string to be shown
 /// @param color The color to display the string
 void                my_putstr_color(char *str, char *color);
+
+//====================== my_debug_functions.c ======================
+
+/// @brief Write out a float number on screen
+/// @param nbr The actual number to be displayed
+/// @param nb_round The nb to show after the dot
+void                my_putfloat(float nbr, int nb_round);
+
+/// @brief Write out a double on screen
+/// @param nbr The actual double to be printed
+/// @param nb_round The nb to show after the dot
+void                my_putdouble(double nbr, int nb_round);
+
+/// @brief Write out a long double on screen
+/// @param nbr The actual long double to be shown
+/// @param nb_round The nb to show after the dot
+void                my_putldouble(long double nbr, int nb_round);
+
+/// @brief Display a looong int to the screen
+/// @param nbr The actual looong int
+void                my_putlnbr(long long int nbr);
 
 //====================== my_debug.c ======================
 
