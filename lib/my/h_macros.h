@@ -49,10 +49,10 @@
         char * : VARIABLE_TYPE_STRING,                                  \
         default: VARIABLE_TYPE_POINTER)
 
-    #define my_debug(type, var) dev_my_debug(my_create_box(STR(var),\
-        POINTER(var), STR(type)), __LINE__, __FILE__)
-    #define my_debug_custom(type, var, func) dev_my_debug_custom(\
-        my_create_box(STR(var), POINTER(var), STR(type)), __LINE__, __FILE__,\
+    #define my_debug(var) dev_my_debug(my_create_box(STR(var),\
+        POINTER(var), typeof(var)), __LINE__, __FILE__)
+    #define my_debug_custom(var, func) dev_my_debug_custom(\
+        my_create_box(STR(var), POINTER(var), typeof(var)), __LINE__, __FILE__,\
             func)
 
 #endif
