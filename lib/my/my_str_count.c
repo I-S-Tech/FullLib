@@ -20,7 +20,7 @@ int                 my_str_counts(const char *str, const char *sub)
 {
     char *_str = my_strdup(str);
     int total = 0, pos = 0, next_pos = 0;
-    while (next_pos = my_str_find(&_str[pos], sub) != -1) {
+    while ((next_pos = my_str_find(&_str[pos], sub)) != -1) {
         pos += my_str_find(&_str[pos], sub) + my_strlen(sub);
         total++;
     }

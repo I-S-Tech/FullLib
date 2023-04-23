@@ -15,7 +15,7 @@ static void         my_put_pointer(unsigned long long ptr)
     char *base = "0123456789abcdef";
     if (ptr > 9223372036854775807)
         return;
-    int basenum = my_strlen(base);
+    unsigned long long basenum = my_strlen(base);
     if (basenum == 0)
         return;
     unsigned long long rest = ptr;
