@@ -30,7 +30,7 @@ $(NAME):		all
 
 all:
 	@printf "\033[32m[LIB] Starting compilation !\033[0m\n"
-	@make compile MAKELEVEL=0
+	@make compile --no-print-directory
 	@printf "\033[32m[LIB] Compilation successfull !\033[0m\n"
 
 %.o:			%.c
