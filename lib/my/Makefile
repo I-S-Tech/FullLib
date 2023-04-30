@@ -29,12 +29,12 @@ CC			=	gcc
 $(NAME):		all
 
 all:
-	@echo "\033[32m[LIB] Starting compilation !\033[0m"
+	@printf "\033[32m[LIB] Starting compilation !\033[0m\n"
 	@make compile MAKELEVEL=0
-	@echo "\033[32m[LIB] Compilation successfull !\033[0m"
+	@printf "\033[32m[LIB] Compilation successfull !\033[0m\n"
 
 %.o:			%.c
-	@echo "\033[2m[LIB] Compiling $<\033[0m"
+	@printf "\033[2m[LIB] Compiling $<\033[0m\n"
 	@$(CC) $(CPPFLAGS) -c $(CFLAGS) $< -o $@
 
 compile:		$(OBJ)
@@ -43,22 +43,22 @@ compile:		$(OBJ)
 	@cp $(NAME) ../
 
 debug:
-	@echo "\033[92m[LIB] Starting debug compilation !\033[0m"
-	@make compile CFLAGS="$(DEBUG_FLAGS)" MAKELEVEL=0
-	@echo "\033[92m[LIB] Debug compilation duccessfull !\033[0m"
+	@printf "\033[92m[LIB] Starting debug compilation !\033[0m\n"
+	@make compile CFLAGS="$(DEBUG_FLAGS)" --no-print-directory
+	@printf "\033[92m[LIB] Debug compilation duccessfull !\033[0m\n"
 
 clean:
-	@echo "\033[31m[LIB] Starting cleanning !\033[0m"
+	@printf "\033[31m[LIB] Starting cleanning !\033[0m\n"
 	@rm -f *.swp
 	@rm -f $(OBJ)
-	@echo "\033[31m[LIB] Cleanning success !\033[0m"
+	@printf "\033[31m[LIB] Cleanning success !\033[0m\n"
 
 fclean:		clean
-	@echo "\033[91m[LIB] Starting purge !\033[0m"
+	@printf "\033[91m[LIB] Starting purge !\033[0m\n"
 	@rm -f ../../includes/lib/*
 	@rm -f ../$(NAME)
 	@rm -f $(NAME)
-	@echo "\033[91m[LIB] Purge success !\033[0m"
+	@printf "\033[91m[LIB] Purge success !\033[0m\n"
 
 re:			fclean	compile
 
