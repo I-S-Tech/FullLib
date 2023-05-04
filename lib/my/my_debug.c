@@ -2,69 +2,35 @@
 ** EPITECH PROJECT, 2023
 ** lib
 ** File description:
-** [Beta] Show debug infos from LVALUE passed.
-** Currently supported "type" values :
-** I, S, B, P
+** my_debug
 */
 
 #include "includes.h"
 
-static void         my_put_pointer(unsigned long long ptr)
-{
-    my_putstr("0x");
-    char *base = "0123456789abcdef";
-    if (ptr > 9223372036854775807)
-        return;
-    unsigned long long basenum = my_strlen(base);
-    if (basenum == 0)
-        return;
-    unsigned long long rest = ptr;
-    unsigned long long power = 1;
-    while ((rest / power) > basenum)
-        power *= basenum;
-    while (power > 0) {
-        my_putchar(base[rest / power]);
-        rest %= power;
-        power /= basenum;
-    }
-}
-
-static void         custom_showstr(const char *str)
-{
-    my_putchar('"');
-    for (int i = 0; str[i]; i++) {
-        if (str[i] < 32 || str[i] > 126) {
-            my_putstr(MY_COLOR_RED);
-            my_putchar('\\');
-            my_putnbr_base((int)str[i], "0123456789abcdef");
-            my_putstr(MY_COLOR_YELLOW);
-        } else {
-            my_putchar(str[i]);
-        }
-    }
-    my_putchar('"');
+void              (*get_debug_function(variable_type type))(void *value) {
+    if (type == VARIABLE_TYPE_UNSIGNED_CHAR) return &debug_print_uchar;
+    if (type == VARIABLE_TYPE_SIGNED_CHAR) return &debug_print_char;
+    if (type == VARIABLE_TYPE_UNSIGNED_SHORT_INT) return &debug_print_usint;
+    if (type == VARIABLE_TYPE_SIGNED_SHORT_INT) return &debug_print_sint;
+    if (type == VARIABLE_TYPE_UNSIGNED_INT) return &debug_print_uint;
+    if (type == VARIABLE_TYPE_SIGNED_INT) return &debug_print_int;
+    if (type == VARIABLE_TYPE_UNSIGNED_LONG_INT) return &debug_print_ulong;
+    if (type == VARIABLE_TYPE_SIGNED_LONG_INT) return &debug_print_long;
+    if (type == VARIABLE_TYPE_UNSIGNED_LONG_LONG_INT)
+        return &debug_print_ulong_long;
+    if (type == VARIABLE_TYPE_SIGNED_LONG_LONG_INT)
+        return &debug_print_long_long;
+    if (type == VARIABLE_TYPE_FLOAT) return &debug_print_float;
+    if (type == VARIABLE_TYPE_DOUBLE) return &debug_print_double;
+    if (type == VARIABLE_TYPE_LONG_DOUBLE) return &debug_print_long_double;
+    if (type == VARIABLE_TYPE_STRING) return &debug_print_string;
+    if (type == VARIABLE_TYPE_POINTER) return &debug_print_pointer;
 }
 
 static void         show_value(variable_type type, void *value)
 {
     my_putstr(MY_COLOR_YELLOW);
-    if (type == VARIABLE_TYPE_UNSIGNED_CHAR || type ==
-        VARIABLE_TYPE_SIGNED_CHAR) my_putchar(*(char *)value);
-    if (type == VARIABLE_TYPE_UNSIGNED_SHORT_INT || type ==
-        VARIABLE_TYPE_SIGNED_SHORT_INT || type == VARIABLE_TYPE_UNSIGNED_INT ||
-        type == VARIABLE_TYPE_SIGNED_LONG_INT || type ==
-        VARIABLE_TYPE_UNSIGNED_LONG_INT || type == VARIABLE_TYPE_SIGNED_INT ||
-        type == VARIABLE_TYPE_UNSIGNED_LONG_LONG_INT || type ==
-        VARIABLE_TYPE_SIGNED_LONG_LONG_INT) {
-        my_putlnbr(*(long long int *)value);
-    }
-    if (type == VARIABLE_TYPE_FLOAT) my_putfloat(*(float *)value, 6);
-    if (type == VARIABLE_TYPE_DOUBLE) my_putdouble(*(double *)value, 6);
-    if (type == VARIABLE_TYPE_LONG_DOUBLE)
-        my_putldouble(*(long double *)value, 6);
-    if (type == VARIABLE_TYPE_STRING) custom_showstr(*(char **)value);
-    if (type == VARIABLE_TYPE_POINTER)
-        my_put_pointer(*(unsigned long long *)&value);
+    get_debug_function(type)(value);
     my_putchar('\n');
     my_putstr(MY_COLOR_RESET);
 }

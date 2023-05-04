@@ -13,6 +13,7 @@
     #include "h_macros.h"
 
     #include "h_lib.h"
+    #include "h_debug.h"
     #include "h_lists.h"
 
 #endif

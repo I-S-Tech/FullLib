@@ -7,12 +7,7 @@
 
 SRC			=	$(wildcard *.c)
 
-HEADERS		=	includes.h				\
-				h_headers.h				\
-				h_lib.h					\
-				h_lists.h				\
-				h_macros.h				\
-				h_types.h				\
+HEADERS		=	*.h
 
 OBJ			=	$(SRC:.c=.o)
 

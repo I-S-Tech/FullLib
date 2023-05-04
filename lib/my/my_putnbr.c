@@ -9,8 +9,6 @@
 
 void                my_putnbr_fd(int nbr, int fd)
 {
-    if (!nbr)
-        return;
     if (nbr < 0) {
         my_putchar_fd('-', fd);
         my_putnbr_fd(-nbr, fd);
