@@ -11,7 +11,7 @@ static void         dev_debug_print_special_char(char c)
 {
     switch (c) {
         case 0: my_putchar('0'); return;
-        case 7: my_putchar('a'); return;    
+        case 7: my_putchar('a'); return;
         case 8: my_putchar('b'); return;
         case 9: my_putchar('t'); return;
         case 10: my_putchar('n'); return;
