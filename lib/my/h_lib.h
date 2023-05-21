@@ -36,6 +36,16 @@ void                my_putstr_color_fd(char *str, char *color, int fd);
 /// @param color The color to display the string
 void                my_putstr_color(char *str, char *color);
 
+//====================== my_frees.c ======================
+
+/// @brief Completly free a char map
+/// @param map The map to be freed
+void                free_char_map(char **map);
+
+/// @brief Completly free a int map
+/// @param map The map to be freed
+void                free_int_map(int **map);
+
 //====================== my_debug_functions.c ======================
 
 /// @brief Write out a float number on screen
@@ -163,6 +173,13 @@ void                my_putstr_fd(const char *str, int fd);
 /// @brief Write out a string into STDOUT
 /// @param str The actual string
 void                my_putstr(const char *str);
+
+//====================== my_revstr.c ======================
+
+/// @brief Return a reversed string (malloced)
+/// @param str The string to reverse
+/// @return The reversed string
+char               *my_revstr(char *str);
 
 //====================== my_showstr.c ======================
 

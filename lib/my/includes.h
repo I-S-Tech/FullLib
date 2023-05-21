@@ -15,5 +15,6 @@
     #include "h_lib.h"
     #include "h_debug.h"
     #include "h_lists.h"
+    #include "h_printf.h"
 
 #endif

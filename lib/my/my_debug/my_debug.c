@@ -5,9 +5,10 @@
 ** my_debug
 */
 
-#include "includes.h"
+#include "../includes.h"
 
-void              (*get_debug_function(variable_type type))(void *value) {
+void              (*get_debug_function(variable_type type))(void *value,
+    int fd) {
     if (type == VARIABLE_TYPE_UNSIGNED_CHAR) return &debug_print_uchar;
     if (type == VARIABLE_TYPE_SIGNED_CHAR) return &debug_print_char;
     if (type == VARIABLE_TYPE_UNSIGNED_SHORT_INT) return &debug_print_usint;
@@ -25,12 +26,13 @@ void              (*get_debug_function(variable_type type))(void *value) {
     if (type == VARIABLE_TYPE_LONG_DOUBLE) return &debug_print_long_double;
     if (type == VARIABLE_TYPE_STRING) return &debug_print_string;
     if (type == VARIABLE_TYPE_POINTER) return &debug_print_pointer;
+    return NULL;
 }
 
 static void         show_value(variable_type type, void *value)
 {
     my_putstr(MY_COLOR_YELLOW);
-    get_debug_function(type)(value);
+    get_debug_function(type)(value, 1);
     my_putchar('\n');
     my_putstr(MY_COLOR_RESET);
 }

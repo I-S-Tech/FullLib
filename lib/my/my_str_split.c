@@ -12,8 +12,6 @@ char              **my_str_split(char *str, const char *sub)
     if (!(str || sub))
         return NULL;
     int nb_sub = my_str_counts(str, sub);
-    if (!nb_sub)
-        return NULL;
     char **map = malloc(sizeof(char *) * (nb_sub + 2));
     int pos = 0, size = 0;
     map[nb_sub + 1] = NULL;
