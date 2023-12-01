@@ -13,9 +13,6 @@
     #define STR(obj) #obj
     #define POINTER(obj) &obj
 
-    #define true 1
-    #define false 0
-
     // ####################### Colors #######################
 
     #define MY_COLOR_RESET "\33[0m"
@@ -50,9 +47,10 @@
         default: VARIABLE_TYPE_POINTER)
 
     #define my_debug(var) dev_my_debug(my_create_box(STR(var),\
-        POINTER(var), typeof(var)), __LINE__, __FILE__)
+        POINTER(var), typeof(var), sizeof(var)), __LINE__, __FILE__)
     #define my_debug_custom(var, func) dev_my_debug_custom(\
-        my_create_box(STR(var), POINTER(var), typeof(var)), __LINE__, __FILE__,\
+        my_create_box(STR(var), POINTER(var), typeof(var), sizeof(var)), __LINE__, __FILE__,\
             func)
+    #define hexyl(my_box) my_hexyl_fd()
 
 #endif

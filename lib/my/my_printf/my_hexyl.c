@@ -73,6 +73,7 @@ static void         my_hexyl_show_value(char *string,
 
 void                my_hexyl_fd(char *string, int length, int fd)
 {
+    length = (length >= 0) ? length : my_strlen(string);
     int lines_nbr = length / 16;
     lines_nbr += (length % 16) ? 1 : 0;
     if (fd == 1) my_putstr(MY_COLOR_RESET);

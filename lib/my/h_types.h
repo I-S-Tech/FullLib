@@ -30,6 +30,7 @@ typedef struct _m_box {
     char *name;
     void *value;
     variable_type type;
+    unsigned long size;
 } _m_box;
 
 typedef char byte;

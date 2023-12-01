@@ -52,6 +52,7 @@ void                dev_printf_display_from_type(va_list args,
 // Simply past your string, past the strlen, and it shows you the color hexdump
 // The fact that you need to specify the length comes from the fact that it can
 // be used with binary files. Better not stop only when u get a 0 val on bin.
+// But, of course, specifying a -1 as the length let u stop when u meet a 0
 void                my_hexyl_fd(char *string, int length, int fd);
     #define my_hexyl(string, length) my_hexyl_fd(string, length, 1)
 // End of the side quest
@@ -90,8 +91,8 @@ void                printf_print_pointer(void *p, char *formater, int fd);
 // "s" => string
 // "p" => pointer
 // Note that if the input is not part of one of these, it will be casted as "p"
-// IN DEV => You can also put any number of "*" at the begining of any of these
-// to define pointers of these types :
+// You can also put any number of "*" at the begining of any of these to define
+// pointers of these types :
 // If I have an int ***, I can do :
 //     my_printf("%***i%", my_int_p_p_p);
 // To display the pointed int.
