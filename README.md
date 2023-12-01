@@ -12,6 +12,7 @@ On the most notable (and usefull) updates I made, we can see :
 - my_printf : Rework version of the default printf funxtion, this one use a syntax a little more complex (`%type;formaters%`) to display any type of variable, and let you customise them with a lot of formaters (reversing a string, writing an int in a specific base...)
 - my_box : Sample structure containing all the informations about a variable (name, size, type...) used on some of my other features, and can be used manually to store usefull informations about a variable
 - my_list : Double linked list pointing to `void*`, so store any type of data in a list (might want to use a my_box here ;)). Also wrote some of the most common functions encountered when dealing with linked lists (append, prepend, delete, destroy...)
+- my_hexyl : Custom implementation of the `hexyl` command (on linux) (check it [here](https://github.com/sharkdp/hexyl)) as a function.
 - strings operations : my_str_find, my_str_split, my_str_join... Most of the Python (cool) string functions. And no memleaks ;)
 
 Feel free to use this lib in any of your projects.
