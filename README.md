@@ -16,7 +16,7 @@ On the most notable (and usefull) updates I made, we can see :
 
 Feel free to use this lib in any of your projects.
 
-This comes with no warrenty of work, and I do not take any responsability in any illegal use that might involve, at any point, this lib.
+This comes with no warrenty of work, and I do not take any responsability in any illegal use that this lib might, at any point, involve.
 
 Also, If you are a tech1, you might not want to copy this lib. Feel free to inspire yourself, but be aware that if you steal any of the code, you might end up gitting cought.
 
