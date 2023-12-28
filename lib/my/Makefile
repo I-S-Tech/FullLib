@@ -5,10 +5,11 @@
 ## Makefile
 ##
 
-SRC			=	$(wildcard *.c) \
-				$(wildcard my_debug/*.c) \
-				$(wildcard my_lists/*.c) \
-				$(wildcard my_printf/*.c)
+SRC			=	$(wildcard *.c) 						\
+				$(wildcard my_debug/*.c) 				\
+				$(wildcard my_lists/*.c) 				\
+				$(wildcard my_printf/*.c)				\
+				$(wildcard my_garbage_collector/*.c)
 
 HEADERS		=	includes.h				\
 				h_headers.h				\
@@ -16,6 +17,9 @@ HEADERS		=	includes.h				\
 				h_lists.h				\
 				h_macros.h				\
 				h_types.h				\
+				h_garbage_collector.h	\
+				h_debug.h				\
+				h_printf.h
 
 OBJ			=	$(SRC:.c=.o)
 

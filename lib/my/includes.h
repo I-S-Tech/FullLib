@@ -12,9 +12,10 @@
     #include "h_types.h"
     #include "h_macros.h"
 
+    #include "h_lists.h"
+    #include "h_garbage_collector.h"
     #include "h_lib.h"
     #include "h_debug.h"
-    #include "h_lists.h"
     #include "h_printf.h"
 
 #endif

@@ -17,7 +17,7 @@
 /// @param value The box value : any type pointer
 /// @param type The box type : variable_type
 /// @return The newly created box
-m_box               my_create_box(char *name, void *value, variable_type type);
+m_box               my_create_box(char *name, void *value, variable_type type, unsigned long size);
 
 /// @brief Delete a box
 /// @param box The box to delete
