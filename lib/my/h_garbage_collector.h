@@ -26,6 +26,8 @@
     #define gc_malloc(size) _gc_malloc(size, garbage_collector_storage_system)
     #define gc_free(ptr) _gc_free(ptr, garbage_collector_storage_system)
 
+static m_list garbage_collector_storage_system;
+
 m_list              _gc_start(void);
 void                _gc_end(m_list garbage_collector_storage_system);
 void               *_gc_malloc(size_t size, m_list garbage_collector_storage_system);
