@@ -1,46 +1,45 @@
 /*
-** EPITECH PROJECT, 2023
-** lib - garbage_collector
+** EPITECH PROJECT, 2024
+** myFTP
 ** File description:
-** Garbage collector header
+** garbage_collector
 */
 
-#ifndef INCLUDED_LIB_GARBAGE_COLLECTOR_H
-    #define INCLUDED_LIB_GARBAGE_COLLECTOR_H
+#ifndef INCLUDED_GARBAGE_COLLECTOR_H
+    #define INCLUDED_GARBAGE_COLLECTOR_H
 
-// SIMPLE implementation of a garbage collector
+typedef struct _garbage_list {
+    struct _garbage_list *prev;
+    void *ptr;
+    struct _garbage_list *next;
+} garbage_list;
 
-    #include "includes.h"
+void gc_cleanup(void);
 
-// Uncomment to change the default malloc and  free functions
-// If you dont, complex objects wont be freed. But it require the dlsym function
-// #define USE_DLSYM
-
-
-// Please do NOT use the garbage_collector_storage_system variable created with gc_start
-// Never
-// Also, do not use gc_start twice in the same function (like doing 2 "sessions" in the same function, it wont work well)
-
-    #define gc_start() m_list garbage_collector_storage_system = _gc_start()
-    #define gc_end() _gc_end(garbage_collector_storage_system)
-    #define gc_malloc(size) _gc_malloc(size, garbage_collector_storage_system)
-    #define gc_free(ptr) _gc_free(ptr, garbage_collector_storage_system)
-
-static m_list garbage_collector_storage_system;
-
-m_list              _gc_start(void);
-void                _gc_end(m_list garbage_collector_storage_system);
-void               *_gc_malloc(size_t size, m_list garbage_collector_storage_system);
-void                _gc_free(void *ptr, m_list garbage_collector_storage_system);
-
-#ifdef USE_DLSYM
-
-void               *m_malloc(size_t size, m_list garbage_collector_storage_system);
-void                m_free(void *ptr, m_list garbage_collector_storage_system);
-
-#define malloc(size) m_malloc(size, garbage_collector_storage_system)
-#define free(ptr) m_free(ptr, garbage_collector_storage_system)
+void *gc_malloc(size_t size);
+void gc_free(void *ptr);
 
 #endif
 
-#endif
+/*                                                                            *
+ * MIT License                                                                *
+ * Copyright (c) 2024 Tech0ne                                                 *
+ *                                                                            *
+ * Permission is hereby granted, free of charge, to any person obtaining a    *
+ * copy of this software and associated documentation files (the "Software"), *
+ * to deal in the Software without restriction, including without limitation  *
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,   *
+ * and/or sell copies of the Software, and to permit persons to whom the      *
+ * Software is furnished to do so, subject to the following conditions:       *
+ *                                                                            *
+ * The above copyright notice and this permission notice shall be included in *
+ * all copies or substantial portions of the Software.                        *
+ *                                                                            *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,   *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL    *
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING    *
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER        *
+ * DEALINGS IN THE SOFTWARE.                                                  *
+ *                                                                           */
