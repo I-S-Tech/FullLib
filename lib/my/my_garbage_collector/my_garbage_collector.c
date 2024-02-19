@@ -1,71 +1,89 @@
 /*
-** EPITECH PROJECT, 2023
-** my_malloc
+** EPITECH PROJECT, 2024
+** myFTP
 ** File description:
-** Garbage collector - malloc
+** garbage_collector
 */
 
 #include "../includes.h"
 
-m_list              _gc_start(void)
+static garbage_list *garbage_collector_reference;
+
+static garbage_list *gcl_create_new(void *ptr)
 {
-    return m_list_create(NULL);
+    garbage_list *new = (garbage_list *)malloc(sizeof(garbage_list));
+
+    new->prev = NULL;
+    new->ptr = ptr;
+    new->next = NULL;
+    return new;
 }
 
-void                _gc_end(m_list garbage_collector_storage_system)
+static void gcl_add(garbage_list *new)
 {
-    if (!garbage_collector_storage_system) return;
-    m_list current = garbage_collector_storage_system;
-    for (; current; current = current->next)
-        if (current->data)
-            m_list_remove(current, true);
-    
-    m_list_destroy(garbage_collector_storage_system, false);
+    garbage_list *current = garbage_collector_reference;
+
+    if (!current)
+        return;
+    for (; current->next; current = current->next);
+    current->next = new;
+    new->prev = current;
 }
 
-void        *_gc_malloc(size_t size, m_list garbage_collector_storage_system)
+void gc_cleanup(void)
+{
+    garbage_list *current = garbage_collector_reference;
+
+    debug(true, "Clearing resources...\n");
+    if (!garbage_collector_reference)
+        return;
+    for (; current->prev; current = current->prev);
+    for (; current->next; current = current->next) {
+        if (!current->prev)
+            continue;
+        free(current->prev->ptr);
+        free(current->prev);
+        current->prev = NULL;
+    }
+    if (current->prev) {
+        free(current->prev->ptr);
+        free(current->prev);
+    }
+    free(current->ptr);
+    free(current);
+    garbage_collector_reference = NULL;
+}
+
+void *gc_malloc(size_t size)
 {
     void *obj = malloc(size);
-    m_list_append(garbage_collector_storage_system, m_list_create(obj));
+
+    if (!garbage_collector_reference)
+        garbage_collector_reference = gcl_create_new(obj);
+    else
+        gcl_add(gcl_create_new(obj));
     return obj;
 }
 
-void        _gc_free(void *ptr, m_list garbage_collector_storage_system)
+void gc_free(void *ptr)
 {
-    if (!ptr) return;
-    m_list current = garbage_collector_storage_system;
+    garbage_list *current = garbage_collector_reference;
 
-    for (; current; current = current->next)
-        if (current->data == ptr)
-            m_list_remove(current, true);
+    if (!current)
+        return;
+    for (; current->prev; current = current->prev);
+    for (; current; current = current->next) {
+        if (current->ptr != ptr)
+            continue;
+        free(current->ptr);
+        if (current == garbage_collector_reference)
+            garbage_collector_reference = current->prev ?
+                current->prev : current->next;
+        if (current->prev)
+            current->prev->next = current->next;
+        if (current->next)
+            current->next->prev = current->prev;
+        free(current);
+        return;
+    }
 }
-
-#ifdef USE_DLSYM
-#define _GNU_SOURCE
-
-#include <dlfcn.h>
-
-void       *m_malloc(size_t size, m_list garbage_collector_storage_system)
-{
-    void *(*_malloc)(size_t size);
-    _malloc = dlsym(RTDL_NEXT, "malloc");
-    void *obj = _malloc(size);
-    m_list_append(garbage_collector_storage_system, m_list_create(obj));
-    return obj;
-}
-
-void       *m_free(void *ptr, m_list garbage_collector_storage_system)
-{
-    if (!ptr) return;
-    void (*_free)(void *ptr);
-    _free = dlsym(RTDL_NEXT, "free");
-
-    m_list current = garbage_collector_storage_system;
-
-    for (; current; current = current->next)
-        if (current->data == ptr)
-            m_list_remove(current, false);
-    _free(ptr);
-}
-
-#endif
