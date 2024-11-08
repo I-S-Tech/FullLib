@@ -26,12 +26,14 @@ typedef enum variable_type {
     VARIABLE_TYPE_POINTER,
 } variable_type;
 
-typedef struct _m_box {
+typedef struct _f_box {
     char *name;
     void *value;
     variable_type type;
     unsigned long size;
-} _m_box;
+} _f_box;
+
+typedef _f_box* f_box;
 
 typedef char byte;
 

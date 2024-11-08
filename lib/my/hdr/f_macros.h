@@ -13,19 +13,17 @@
     #define STR(obj) #obj
     #define POINTER(obj) &obj
 
+    #define UNUSED __attribute__((unused))
+
     // ####################### Colors #######################
 
-    #define MY_COLOR_RESET "\33[0m"
-    #define MY_COLOR_GREY "\33[90m"
-    #define MY_COLOR_BLINK "\33[5m"
-    #define MY_COLOR_RED "\33[91m"
-    #define MY_COLOR_GREEN "\33[92m"
-    #define MY_COLOR_YELLOW "\33[93m"
-    #define MY_COLOR_BLUE "\33[94m"
-
-    // ####################### Structs #######################
-
-    #define m_box _m_box *
+    #define F_COLOR_RESET "\33[0m"
+    #define F_COLOR_GREY "\33[90m"
+    #define F_COLOR_BLINK "\33[5m"
+    #define F_COLOR_RED "\33[91m"
+    #define F_COLOR_GREEN "\33[92m"
+    #define F_COLOR_YELLOW "\33[93m"
+    #define F_COLOR_BLUE "\33[94m"
 
     // ####################### Functions #######################
 
@@ -46,11 +44,11 @@
         char * : VARIABLE_TYPE_STRING,                                  \
         default: VARIABLE_TYPE_POINTER)
 
-    #define my_debug(var) dev_my_debug(my_create_box(STR(var),\
+    #define f_debug(var) dev_f_debug(f_create_box(STR(var),\
         POINTER(var), typeof(var), sizeof(var)), __LINE__, __FILE__)
-    #define my_debug_custom(var, func) dev_my_debug_custom(\
-        my_create_box(STR(var), POINTER(var), typeof(var), sizeof(var)), __LINE__, __FILE__,\
+    #define f_debug_custom(var, func) dev_f_debug_custom(\
+        f_create_box(STR(var), POINTER(var), typeof(var), sizeof(var)), __LINE__, __FILE__,\
             func)
-    #define hexyl(my_box) my_hexyl_fd()
+    #define f_hexyl(string, length) f_hexyl_fd(string, length, 1)
 
 #endif
